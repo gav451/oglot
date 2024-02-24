@@ -44,14 +44,14 @@
 ;; Oglot also allows to control tangling: synchronizing an Org file
 ;; with a tangled file works best after tangling the Org file with the
 ;; header arguments property ":comments link".  Toggling this property
-;; allows to use those comments for internal use and to hide them for
+;; allows to use those comments for internal use and to nuke them for
 ;; external use (by using e.g. `oglot-python-comments-link-toggle').
 
 ;;; Code:
 
-;; Basic functionality:
-
 (declare-function org-ctrl-c-ctrl-c "org" (&optional arg))
+
+;; Basic functionality:
 
 (defgroup oglot nil
   "Org source blocks with Eglot."
