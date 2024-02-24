@@ -29,10 +29,11 @@ To use Org source blocks with Eglot for ~lua-mode~, ~python-mode~, and
 #+begin_src emacs-lisp -n :results silent
 (when (and (package-installed-p 'oglot)
            (require 'oglot nil 'noerror))
+  ;; Ensure to understand all caveats.
   (setopt oglot-maybe-ensure-modes '(lua-mode python-mode ruby-mode)))
 #+end_src
 
-Note that only ~python-mode~ works for sure and that the stauts of ~lua-mode~
+Note that only ~python-mode~ works for sure and that the status of ~lua-mode~
 and ~ruby-mode~ is unsure.
 
 The file [[./examples/rpasyncio.org][rpasycnio.org]] is a practical example.

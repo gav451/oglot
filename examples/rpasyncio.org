@@ -4,27 +4,28 @@
 
 * Setup
 
-The post [[https://realpython.com/async-io-python/][Async IO in Python: A Complete Walkthrough]] is source of the
-Python code in Org source blocks.  The setup assumes successful
-installation of ~oglot~ and successful execution of the source block
-below.
+The post [[https://realpython.com/async-io-python/][Async IO in Python: A Complete Walkthrough]] is source of the Python code
+in Org source blocks.  The setup assumes successful installation of ~oglot~ and
+successful execution of code similar to that of the source block below.
 
 #+begin_src emacs-lisp -n :results silent
-(require 'oglot)
+(when (and (package-installed-p 'oglot)
+           (require 'oglot nil 'noerror))
+  ;; Ensure to understand all caveats.
+  (setopt oglot-maybe-ensure-modes '(python-mode)))
 #+end_src
 
-The setup also assumes that there is a tangled file [[./rpasyncio.py][rpasyncio.py]] for
-the execution of the source block below.
+The setup also assumes that there is a tangled file [[./rpasyncio.py][rpasyncio.py]] for the
+execution of the source block below.
 
 #+begin_src python -i -n :results silent :session :tangle no
 from rpasyncio import rp1, rp2, rp3
 #+end_src
 
-This opens an inferior Python shell to display the output of the
-Python calls ~rp1()~, ~rp2()~, and ~rp3()~ below.  Calling
-~org-edit-src-code~ with point on one of the blocks ~rp1~, ~rp2~, or
-~rp3~ will open the ~org-src-mode~ buffer in a visually unchanged
-identical way while launching Eglot on [[./rpasyncio.py][rpasyncio.py]].
+This opens an inferior Python shell to display the output of the Python calls
+~rp1()~, ~rp2()~, and ~rp3()~ below.  Calling ~org-edit-src-code~ with point on
+one of the blocks ~rp1~, ~rp2~, or ~rp3~ will open the ~org-src-mode~ buffer in
+a visually unchanged identical way while launching Eglot on [[./rpasyncio.py][rpasyncio.py]].
 
 * 1st example
 
