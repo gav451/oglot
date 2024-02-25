@@ -1,6 +1,6 @@
-# [[file:rpasyncio.org::*Python module header][Python module header:1]]
+# [[file:rpasyncio.org::header][header]]
 """Examples stolen from 'https://realpython.com'."""
-# Python module header:1 ends here
+# header ends here
 
 
 # [[file:rpasyncio.org::rp1][rp1]]
