@@ -33,6 +33,10 @@ Now, the interpreter of the inferior Python shell can provide completion input.
 In absence of an interpreter, ~visit-tags-table~ will emit "Visit tags table"
 prompts to provide completion input.  This does not play nicely with completion.
 
+Switch to the inferior Python shell buffer to see the output of the example
+demonstration calls ~rp1()~, ~rp2(444)~, and ~rp3(453, (3, 4, 2))~.  Those calls
+may take up to 20 seconds before terminating and displaying output.
+
 * Python module header
 
 #+name: header
