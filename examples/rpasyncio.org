@@ -27,12 +27,22 @@ This opens an inferior Python shell to display the output of the Python calls
 one of the blocks ~rp1~, ~rp2~, or ~rp3~ will open the ~org-src-mode~ buffer in
 a visually unchanged identical way while launching Eglot on [[./rpasyncio.py][rpasyncio.py]].
 
+Now, the interpreter of the inferior Python shell can provide completion input.
+In absence of an interpreter, ~visit-tags-table~ will emit "Visit tags table"
+prompts to provide completion input.  This does not play nicely with completion.
+
+* Python module header
+
+#+begin_src python -i -n :results silent :session
+"""Examples stolen from 'https://realpython.com'."""
+#+end_src
+
 * 1st example
 
 #+name: rp1
 #+begin_src python -i -n :results silent :session
-# countsync.py example
 def rp1():
+    """Show 'countsync.py' example."""
     import asyncio
     import time
 
@@ -50,6 +60,8 @@ def rp1():
     print(f"{__name__} executed in {ticktock:0.2f} seconds.")
 #+end_src
 
+Executing the next source block demonstrates the 1st example.
+
 #+begin_src python -i -n :results silent :session :tangle no
 rp1()
 #+end_src
@@ -59,8 +71,8 @@ rp1()
 #+caption: ~rand.py~
 #+name: rp2
 #+begin_src python -i -n :results silent :session
-# rand.py example
 def rp2(seed):
+    """Show 'rand.py' example."""
     import asyncio
     import random
 
@@ -92,6 +104,8 @@ def rp2(seed):
     print(f"r1: {r1}, r2: {r2}, r3: {r3}")
 #+end_src
 
+Executing the next source block demonstrates the 2nd example.
+
 #+begin_src python -i -n :results silent :session :tangle no
 rp2(444)
 #+end_src
@@ -100,8 +114,8 @@ rp2(444)
 
 #+name: rp3
 #+begin_src python -i -n :results silent :session
-# chained.py example
 def rp3(seed, args=None):
+    """Show 'chained.py' example."""
     import asyncio
     import random
     import time
@@ -132,7 +146,6 @@ def rp3(seed, args=None):
     async def main(*args):
         await asyncio.gather(*(chain(n) for n in args))
 
-
     random.seed(seed)
     args = [1, 2, 3] if args is None else args
     start = time.perf_counter()
@@ -140,6 +153,8 @@ def rp3(seed, args=None):
     end = time.perf_counter() - start
     print(f"Program finished in {end:0.2f} seconds.")
 #+end_src
+
+Executing the next source block demonstrates the 3rd example.
 
 #+begin_src python -i -n :results silent :session :tangle no
 rp3(453, (3, 4, 2))

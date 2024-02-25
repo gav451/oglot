@@ -1,6 +1,11 @@
+# [[file:rpasyncio.org::*Python module header][Python module header:1]]
+"""Examples stolen from 'https://realpython.com'."""
+# Python module header:1 ends here
+
+
 # [[file:rpasyncio.org::rp1][rp1]]
-# countsync.py example
 def rp1():
+    """Show 'countsync.py' example."""
     import asyncio
     import time
 
@@ -22,8 +27,8 @@ def rp1():
 
 
 # [[file:rpasyncio.org::rp2][rp2]]
-# rand.py example
 def rp2(seed):
+    """Show 'rand.py' example."""
     import asyncio
     import random
 
@@ -59,8 +64,8 @@ def rp2(seed):
 
 
 # [[file:rpasyncio.org::rp3][rp3]]
-# chained.py example
 def rp3(seed, args=None):
+    """Show 'chained.py' example."""
     import asyncio
     import random
     import time

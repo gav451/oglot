@@ -1,0 +1,38 @@
+# See:
+# https://docs.astral.sh/ruff/configuration/
+# https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 88
+select = [
+  "ARG", # flake8-unused-arguments
+  "B",   # flake8-bugbear
+  "C",   # mccabe
+  "C4",  # flake8-comprehensions
+  "E",   # pycodestyle
+  "D",   # pydocstyle
+  "F",   # pyflakes
+  "UP",  # pyupgrade
+  "W",   # pycodestyle
+]
+ignore = [
+  "B905", # `zip()` without an explicit `strict=` parameter
+  "D202", # no blank lines allowed after function docstring
+]
+
+[tool.ruff.mccabe]
+max-complexity = 15
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
+
+# Local Variables:
+# mode: conf-toml-mode
+# End:

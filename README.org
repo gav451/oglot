@@ -36,7 +36,9 @@ To use Org source blocks with Eglot for ~lua-mode~, ~python-mode~, and
 Note that only ~python-mode~ works for sure and that the status of ~lua-mode~
 and ~ruby-mode~ is unsure.
 
-The file [[./examples/rpasyncio.org][rpasycnio.org]] is a practical example.
+The file [[./pyproject.toml][pyproject.toml]] is an example how to configure the hints that [[https://github.com/astral-sh/ruff][ruff]] will
+emit.  The file [[./examples/rpasyncio.org][rpasycnio.org]] is a practical example that should also work with
+[[https://github.com/python-lsp/python-lsp-server][python-lsp]] without the [[https://github.com/python-lsp/python-lsp-ruff][python-lsp-ruff]] plugin.
 
 # Local Variables:
 # fill-column: 80
