@@ -43,8 +43,8 @@ rough edges and that the status of ~lua-mode~ and ~ruby-mode~ is unsure.
 
 The file [[./pyproject.toml][pyproject.toml]] is an example how to configure the hints that [[https://github.com/astral-sh/ruff][ruff]] will
 emit.  The file [[./examples/rpasyncio.org][rpasycnio.org]] is a practical example that should also work with
-[[https://github.com/python-lsp/python-lsp-server][python-lsp]] without the [[https://github.com/python-lsp/python-lsp-ruff][python-lsp-ruff]] plugin.  The file [[./examples/julia-mandelbrot.org/][julia-mandelbrot]] is an
-[[https://github.com/non-Jedi/eglot-jl][eglot-jl]] example.
+[[https://github.com/python-lsp/python-lsp-server][python-lsp]] without the [[https://github.com/python-lsp/python-lsp-ruff][python-lsp-ruff]] plugin.  The file [[./examples/julia-mandelbrot.org][julia-mandelbrot.org]] is
+an [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] example.
 
 # Local Variables:
 # fill-column: 80

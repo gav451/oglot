@@ -5,10 +5,9 @@
 * Setup
 
 Today, I use local [[https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository][GitHub clones]] to run [[https://ess.r-project.org/][Emacs Speaks Statics]] and [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]]. The
-source block ~diff-result~ shows how I have patched [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]] to have
-~ESS[julia]~ modes recognized by [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]].
-
-[[https://dev.to/juliapbn/building-fractals-with-the-julia-programming-language-22ao][Building Fractals with the Julia Language]]
+source block ~diff-result~ shows how I have patched [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]] to have the
+~ESS[julia]~ mode recognized by [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]].  In case you view this file on [[https://github.com/gav451/oglot/blob/main/examples/julia-mandelbrot.org][GitHub]],
+you have to click the *Raw* button to read this source block.
 
 #+name: diff
 #+header: :wrap "src diff -n"
