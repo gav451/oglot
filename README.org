@@ -5,6 +5,7 @@ Oglot (Org source blocks with Eglot) builds on the idea of the post [[https://ww
 Rustic, Eglot, and Org-Babel for literate programming with LSP support in Emacs]]
 to facititate the analyis of Org source code blocks with LSP servers.  This
 requires installing suitable LSP servers and tangling of the Org source blocks.
+Note: [[https://github.com/brotzeit/rustic][Rustic]] supports [[https://www.rust-lang.org/][Rust]] Org source blocks by means of [[https://github.com/brotzeit/rustic/blob/master/rustic-babel.el][rustic-babel]].
 
 Oglot tries to locate an Org source block in a tangled file when calling
 ~org-edit-src-code~.  In case of success, it visits the tangled file in the
@@ -17,30 +18,33 @@ other languages and servers: add your language to ~oglot-maybe-ensure-modes~ and
 define an ~org-babel-edit-prep:<LANGUAGE>~ function similar to
 ~org-babel-edit-prep:python~ using ~oglot-org-babel-edit-prep~.
 
+Oglot works with [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] and [[https://github.com/julia-vscode/LanguageServer.jl][LanguageServer.jl]], but the server startup time is
+too long for small snippets and the server is too verbose.
+
 Oglot also allows to control tangling: synchronizing an Org file with a tangled
 file works best after tangling the Org file with the header arguments property
 ":comments link".  Toggling this property allows to use those comments for
 internal use and to hide those comments for external use (by means of e.g.
 ~oglot-python-comments-link-toggle~).
 
-To use Org source blocks with Eglot for ~lua-mode~, ~python-mode~, and
-~ruby-mode~ source blocks, execute the following source block:
+To use Org source blocks with Eglot for ~julia-mode~, ~lua-mode~, ~python-mode~,
+and ~ruby-mode~ source blocks, execute the following source block:
 
 #+begin_src emacs-lisp -n :results silent
 (when (and (package-installed-p 'oglot)
            (require 'oglot nil 'noerror))
   ;; Ensure to understand all caveats.
-  (setopt oglot-maybe-ensure-modes '(lua-mode python-mode ruby-mode)))
+  (setopt oglot-maybe-ensure-modes
+          '(julia-mode lua-mode python-mode ruby-mode)))
 #+end_src
 
-Note that only ~python-mode~ works for sure and that the status of ~lua-mode~
-and ~ruby-mode~ is unsure.
+Note that only ~python-mode~ works for sure, and that ~julia-mode~ works but has
+rough edges and that the status of ~lua-mode~ and ~ruby-mode~ is unsure.
 
 The file [[./pyproject.toml][pyproject.toml]] is an example how to configure the hints that [[https://github.com/astral-sh/ruff][ruff]] will
 emit.  The file [[./examples/rpasyncio.org][rpasycnio.org]] is a practical example that should also work with
-[[https://github.com/python-lsp/python-lsp-server][python-lsp]] without the [[https://github.com/python-lsp/python-lsp-ruff][python-lsp-ruff]] plugin.
-
-Note: [[https://github.com/brotzeit/rustic][Rustic]] supports [[https://www.rust-lang.org/][Rust]] Org source blocks by means of [[https://github.com/brotzeit/rustic/blob/master/rustic-babel.el][rustic-babel]].
+[[https://github.com/python-lsp/python-lsp-server][python-lsp]] without the [[https://github.com/python-lsp/python-lsp-ruff][python-lsp-ruff]] plugin.  The file [[./examples/julia-mandelbrot.org/][julia-mandelbrot]] is an
+[[https://github.com/non-Jedi/eglot-jl][eglot-jl]] example.
 
 # Local Variables:
 # fill-column: 80

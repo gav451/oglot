@@ -3,7 +3,7 @@
 ;; Copyright (C) 2024  Gerard Vermeulen
 
 ;; Author: Gerard Vermeulen <gerard.vermeulen@posteo.net>
-;; Version: 0.1
+;; Version: 0.2
 ;; Keywords: hypermedia, languages, text
 ;; Package-Requires: ((emacs "28.1") (eglot "1.9"))
 
@@ -26,7 +26,9 @@
 ;; https://www.reddit.com/r/emacs/comments/w4f4u3 post to facititate
 ;; the analyis of Org source code blocks with LSP servers.  This
 ;; requires installing suitable LSP servers and tangling of the Org
-;; source blocks.
+;; source blocks.  Note: https://github.com/brotzeit/rustic supports
+;; Rust source blocks by means of
+;; https://github.com/brotzeit/rustic/blob/master/rustic-babel.el.
 
 ;; Oglot tries to locate an Org source block in a tangled file when
 ;; calling `org-edit-src-code'.  In case of success, it visits the
@@ -40,6 +42,11 @@
 ;; servers: add your language mode to `oglot-maybe-ensure-modes' and
 ;; define an `org-babel-edit-prep:<LANGUAGE>' function similar to
 ;; `org-babel-edit-prep:python' using `oglot-org-babel-edit-prep'.
+
+;; Oglot works with https://github.com/non-Jedi/eglot-jl and
+;; https://github.com/julia-vscode/LanguageServer.jl, but the server
+;; startup time is too long for small snippets and the server is too
+;; verbose.
 
 ;; Oglot also allows to control tangling: synchronizing an Org file
 ;; with a tangled file works best after tangling the Org file with the
@@ -120,6 +127,10 @@ and `org-babel-edit-prep:sql'."
              (defun org-babel-edit-prep:fortran (info)
                "Oglot `org-babel-edit-prep:<LANG>' for Fortran 77."
                (oglot-org-babel-edit-prep info)))
+           (when (member 'julia-mode val)
+             (defun org-babel-edit-prep:julia (info)
+               "Oglot `org-babel-edit-prep:<LANG>' for Julia."
+               (oglot-org-babel-edit-prep info)))
            (when (member 'haskell-mode val)
              (defun org-babel-edit-prep:haskell (info)
                "Oglot `org-babel-edit-prep:<LANG>' for Haskell."
@@ -178,6 +189,10 @@ This is to advice `org-edit-src-exit' and `org-edit-src-save'."
   (format oglot-ha-re-template "fortran")
   "Regexp to find `#+property:' Fortran 77 header arguments.")
 
+(defconst oglot-julia-ha-re
+  (format oglot-ha-re-template "julia")
+  "Regexp to find `#+property:' Julia header arguments.")
+
 (defconst oglot-haskell-ha-re
   (format oglot-ha-re-template "haskell")
   "Regexp to find `#+property:' Haskell header arguments.")
@@ -233,6 +248,7 @@ This is to advice `org-edit-src-exit' and `org-edit-src-save'."
 (oglot--comments-link-toggle "f90" "Fortran 90 and 95")
 (oglot--comments-link-toggle "fortran" "Fortran 77")
 (oglot--comments-link-toggle "haskell" "Haskell")
+(oglot--comments-link-toggle "julia" "Julia")
 (oglot--comments-link-toggle "lua" "Lua")
 (oglot--comments-link-toggle "python" "Python")
 (oglot--comments-link-toggle "ruby" "Ruby")

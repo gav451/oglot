@@ -1,0 +1,78 @@
+#+title: Oglot Julia Mandelbrot Example
+#+author: Gerard Vermeulen
+#+property: header-args:julia :tangle julia-mandelbrot.jl :comments link
+
+* Setup
+
+Today, I use local [[https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository][GitHub clones]] to run [[https://ess.r-project.org/][Emacs Speaks Statics]] and [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]]. The
+source block ~diff-result~ shows how I have patched [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]] to have
+~ESS[julia]~ modes recognized by [[https://github.com/non-Jedi/eglot-jl#][eglot-jl]].
+
+[[https://dev.to/juliapbn/building-fractals-with-the-julia-programming-language-22ao][Building Fractals with the Julia Language]]
+
+#+name: diff
+#+header: :wrap "src diff -n"
+#+begin_src shell :results output verbatim
+git -C ~/VCS/eglot-jl show HEAD
+#+end_src
+
+#+name: diff-result
+#+RESULTS: diff
+#+begin_src diff -n
+commit 4ac948386979f535c29c10ea4a9cf1e3b8683d31
+Author: Gerard Vermeulen <gerard.vermeulen@posteo.net>
+Date:   Tue Feb 27 15:37:42 2024 +0100
+
+    Make eglot recognize ESS[julia] mode
+
+    I have installed julia-mode following the steps of [ESS Wiki
+    Julia](https://github.com/emacs-ess/ESS/wiki/Julia) which opens Julia
+    files in ESS[julia] mode which eglot did not recognize.
+
+diff --git a/eglot-jl.el b/eglot-jl.el
+index ef5458d..8ca4bb3 100644
+--- a/eglot-jl.el
++++ b/eglot-jl.el
+@@ -88,7 +88,7 @@ Otherwise returns nil"
+   (add-hook 'project-find-functions #'eglot-jl--project-try)
+   (add-to-list 'eglot-server-programs
+                ;; function instead of strings to find project dir at runtime
+-               '((julia-mode julia-ts-mode) . eglot-jl--ls-invocation)))
++               '((ess-julia-mode julia-mode julia-ts-mode) . eglot-jl--ls-invocation)))
+
+ (provide 'eglot-jl)
+ ;;; eglot-jl.el ends here
+#+end_src
+
+* Code
+
+[[https://julialang.org/learning/code-examples/][Julia code examples]] is the source for the Julia blocks. Another interesting
+source is [[https://dev.to/juliapbn/building-fractals-with-the-julia-programming-language-22ao][Building Fractals with the Julia Language]].
+
+#+name: mandelbrot
+#+begin_src julia :results silent :session
+function mandelbrot(a)
+    z = 0
+    for i=1:50
+        z = z^2 + a
+    end
+    return z
+end
+#+end_src
+
+Execution of the block below produces output in the inferior Julia interpreter.
+
+#+name: loop
+#+begin_src julia :results silent :session
+for y=1.0:-0.05:-1.0
+    for x=-2.0:0.0315:0.5
+        abs(mandelbrot(complex(x, y))) < 2 ? print("*") : print(" ")
+    end
+    println()
+end
+#+end_src
+
+# Local Variables:
+# fill-column: 80
+# org-edit-src-content-indentation: 0
+# End:
