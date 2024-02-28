@@ -1,6 +1,8 @@
 #+title: Org source blocks with Eglot
 #+author: Gerard Vermeulen
 
+* Goal with brief technical overview
+
 Oglot (Org source blocks with Eglot) builds on the idea of the post [[https://www.reddit.com/r/emacs/comments/w4f4u3][Using
 Rustic, Eglot, and Org-Babel for literate programming with LSP support in Emacs]]
 to facititate the analyis of Org source code blocks with LSP servers.  This
@@ -18,8 +20,8 @@ other languages and servers: add your language to ~oglot-maybe-ensure-modes~ and
 define an ~org-babel-edit-prep:<LANGUAGE>~ function similar to
 ~org-babel-edit-prep:python~ using ~oglot-org-babel-edit-prep~.
 
-Oglot works with [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] and [[https://github.com/julia-vscode/LanguageServer.jl][LanguageServer.jl]], but the server startup time is
-too long for small snippets and the server is too verbose.
+Oglot works with [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] and [[https://github.com/julia-vscode/LanguageServer.jl][LanguageServer.jl]].  In my opinion, the server
+startup time is too long for small snippets and the server is too verbose.
 
 Oglot also allows to control tangling: synchronizing an Org file with a tangled
 file works best after tangling the Org file with the header arguments property
@@ -45,6 +47,22 @@ The file [[./pyproject.toml][pyproject.toml]] is an example how to configure the
 emit.  The file [[./examples/rpasyncio.org][rpasycnio.org]] is a practical example that should also work with
 [[https://github.com/python-lsp/python-lsp-server][python-lsp]] without the [[https://github.com/python-lsp/python-lsp-ruff][python-lsp-ruff]] plugin.  The file [[./examples/julia-mandelbrot.org][julia-mandelbrot.org]] is
 an [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] example.
+
+* Installation
+
+In case you view this file on [[https://github.com/gav451/oglot/blob/main/README.org][GitHub]], you have to click the *Raw* button to read
+the next lines.
+
+To install the whole git repository in src_emacs-lisp{(file-name-concat
+package-user-dir "oglot")} {{{results(=~/.emacs.d/elpa/oglot=)}}} execute the
+source block below:
+
+#+begin_src emacs-lisp -n :results silent
+(package-vc-install '(oglot :url "https://github.com/gav451/oglot.git"))
+#+end_src
+
+This requires at least Emacs-29.1.  Another method is to clone this repository
+locally to visit the file [[./oglot.el][oglot.el]] and invoke ~package-install-from-buffer~.
 
 # Local Variables:
 # fill-column: 80

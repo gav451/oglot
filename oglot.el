@@ -106,11 +106,12 @@ the Org-mode source block code before calling `eglot-ensure'."
 (defcustom oglot-maybe-ensure-modes nil
   "Modes where calling `org-edit-src-code' will call `eglot-ensure'.
 Using `setopt', it is safe to add modes, but unsafe to remove modes.
-Only `python-mode' works for sure.  The status of the modes `f90-mode',
-`fortran-mode', `haskell-mode', `lua-mode', and `ruby-mode' is unsure.
-Support for other modes requires to update `oglot'.  Be careful not to
-redefine `org-babel-edit-prep:elisp', `org-babel-edit-prep:emacs-lisp',
-and `org-babel-edit-prep:sql'."
+Only `python-mode' works for sure and `julia-mode' works but has rough
+edges.  The status of the modes `f90-mode', `fortran-mode',
+`haskell-mode', `lua-mode', and `ruby-mode' is unsure.  Support for
+other modes requires to update `oglot'.  Be careful not to redefine
+`org-babel-edit-prep:elisp', `org-babel-edit-prep:emacs-lisp', and
+`org-babel-edit-prep:sql'."
   :group 'oglot
   :version "0.1"
   :type '(repeat (symbol :tag "Major mode"))
