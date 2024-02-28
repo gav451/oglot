@@ -48,6 +48,9 @@ emit.  The file [[./examples/rpasyncio.org][rpasycnio.org]] is a practical examp
 [[https://github.com/python-lsp/python-lsp-server][python-lsp]] without the [[https://github.com/python-lsp/python-lsp-ruff][python-lsp-ruff]] plugin.  The file [[./examples/julia-mandelbrot.org][julia-mandelbrot.org]] is
 an [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] example.
 
+Note: The [[https://github.com/karthink/org-src-context][org-src-context]] library facilitates the analysis of Org source blocks
+with [[https://github.com/joaotavora/eglot][eglot]] as well as [[https://github.com/emacs-lsp/lsp-mode][lsp-mode]].
+
 * Installation
 
 To install the whole git repository in src_emacs-lisp{(file-name-concat
