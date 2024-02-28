@@ -50,9 +50,6 @@ an [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] example.
 
 * Installation
 
-In case you view this file on [[https://github.com/gav451/oglot/blob/main/README.org][GitHub]], you have to click the *Raw* button to read
-the next lines.
-
 To install the whole git repository in src_emacs-lisp{(file-name-concat
 package-user-dir "oglot")} {{{results(=~/.emacs.d/elpa/oglot=)}}} execute the
 source block below:
