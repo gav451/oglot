@@ -21,7 +21,7 @@ define an ~org-babel-edit-prep:<LANGUAGE>~ function similar to
 ~org-babel-edit-prep:python~ using ~oglot-org-babel-edit-prep~.
 
 Oglot works with [[https://github.com/non-Jedi/eglot-jl][eglot-jl]] and [[https://github.com/julia-vscode/LanguageServer.jl][LanguageServer.jl]].  In my opinion, the server
-startup time is too long for small snippets and the server is too verbose.
+startup time is too long for small snippets.
 
 Oglot also allows to control tangling: synchronizing an Org file with a tangled
 file works best after tangling the Org file with the header arguments property

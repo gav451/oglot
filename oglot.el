@@ -45,8 +45,7 @@
 
 ;; Oglot works with https://github.com/non-Jedi/eglot-jl and
 ;; https://github.com/julia-vscode/LanguageServer.jl, but the server
-;; startup time is too long for small snippets and the server is too
-;; verbose.
+;; startup time is too long for small snippets.
 
 ;; Oglot also allows to control tangling: synchronizing an Org file
 ;; with a tangled file works best after tangling the Org file with the
