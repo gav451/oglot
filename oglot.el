@@ -1,4 +1,4 @@
-;;; oglot.el --- Org source blocks with Eglot -*- lexical-binding: t; -*-
+;;; oglot.el --- Org source blocks with Eglot -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2024  Gerard Vermeulen
 
